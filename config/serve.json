@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://spuga.sharepoint.com/sites/Chintan/SitePages/Home.aspx",
+      "customActions": {
+        "4b058db8-51cf-4bc6-8f56-6c2c1d8b0af5": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    },
+    "header": {
+      "pageUrl": "https://spuga.sharepoint.com/sites/Chintan/SitePages/Home.aspx",
+      "customActions": {
+        "4b058db8-51cf-4bc6-8f56-6c2c1d8b0af5": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.padding {
+  padding: 10px;
+}
+
+.bg-color {
+  background: linear-gradient(to top , white,white,rgb(163, 192, 190), rgb(119, 147, 157),rgb(107, 175, 200));
+    /* height: 100vh; */
+    margin: 0;}
+
+.text-white {
+  color: white;
+}
+
+
+.padding-x {
+  padding: 0 10px;
+}
+
+.padding-y {
+  padding: 10px 0;
+}
+
+.flex-row {
+  flex-direction: column;
+}
+
+.flex-end {
+  flex-direction: row-reverse;
+}
+
+.button {
+  background-color: red;
+  padding: 10px 20px;
+}
+
+.list-style a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: red;
+  transition: width .4s ease;
+}
+
+.list-style a:hover:after {
+  /* width: 100%; */
+  left: 0;
+  background: red;
+  
+}
+
+.decoration {
+  padding-bottom: 10px;
+  background:
+      linear-gradient(red 0 0) var(--p, 100%) 100% /var(--d, 0) 2px no-repeat;
+  transition: 0.3s, background-position 0s 0.3s;
+  text-decoration: none;
+  font-size: 20px;
+  color:black
+}
+.imglogo{
+
+  height: 100px;
+  width: 290px;
+}
+.headerimage{
+  height: 40px;
+  width:  50px;
+  padding-right: 2px;
+}
+.decoration:hover {
+  --d: 100%;
+  --p: 0%;
+}
+.menu-container{
+  gap: 0px 20px ;
+}
+
+.navbar {
+  padding: 10px 90px 0px 0px;
+}
+
+.list-style {
+  list-style: none;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: red;
+}
