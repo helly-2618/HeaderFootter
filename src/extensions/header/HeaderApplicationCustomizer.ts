@@ -171,11 +171,11 @@ export default class HeaderApplicationCustomizer
 
     const topPlaceholder: PlaceholderContent | undefined = this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top);
     if (topPlaceholder) {
+      // <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="asu">
+      // <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="can">
       topPlaceholder.domElement.innerHTML = `
       <div class="navbar bg-color flex flex-row w-full">
       <div class="country-option flex-end flex padding-y">
-          <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="asu">
-          <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="can">
       </div>
       <div class="container flex flex-wrap align-center justify-between padding-x  text-white">
           <div class="logo-container">
