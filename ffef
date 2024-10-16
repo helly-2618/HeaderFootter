@@ -1,0 +1,183 @@
+[1mdiff --git a/src/extensions/header/HeaderApplicationCustomizer.ts b/src/extensions/header/HeaderApplicationCustomizer.ts[m
+[1mindex 6c83fc6..717989f 100644[m
+[1m--- a/src/extensions/header/HeaderApplicationCustomizer.ts[m
+[1m+++ b/src/extensions/header/HeaderApplicationCustomizer.ts[m
+[36m@@ -1,128 +1,3 @@[m
+[31m-[m
+[31m-// // import { override } from '@microsoft/decorators';[m
+[31m-// import { Log } from '@microsoft/sp-core-library';[m
+[31m-// import { BaseApplicationCustomizer } from '@microsoft/sp-application-base';[m
+[31m-// import { Dialog } from '@microsoft/sp-dialog';[m
+[31m-// import pnp from 'sp-pnp-js';[m
+[31m-// import * as strings from 'HeaderApplicationCustomizerStrings';[m
+[31m-[m
+[31m-// const LOG_SOURCE: string = 'HeaderApplicationCustomizer';[m
+[31m-[m
+[31m-// export interface IHeaderApplicationCustomizerProperties {[m
+[31m-//   // Define your custom properties here[m
+[31m-// }[m
+[31m-[m
+[31m-// // @override[m
+[31m-// export default class HeaderApplicationCustomizer extends BaseApplicationCustomizer<IHeaderApplicationCustomizerProperties> {[m
+[31m-[m
+[31m-//   public onInit(): Promise<void> {[m
+[31m-//     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);[m
+[31m-    [m
+[31m-//     // Setup PnPjs with SharePoint context[m
+[31m-//     pnp.setup({[m
+[31m-//       spfxContext: this.context[m
+[31m-//     });[m
+[31m-[m
+[31m-//     // Retrieve list items using PnPjs[m
+[31m-//     // pnp.sp.web.lists.getByTitle("Attendees_List").items.select("Title", "Id", "CustomField1", "CustomField2").getPaged().then((response: { results: any[]; }) => {[m
+[31m-//     pnp.sp.web.lists.getByTitle("Attendees_List").items.select("Title", "Feedback").getPaged().then((response: { results: any[]; }) => {[m
+[31m-//       // Log list items[m
+[31m-//       console.log(JSON.stringify(response.results, null, 4));[m
+[31m-[m
+[31m-//       // Iterate over list items[m
+[31m-//       response.results.forEach((item: { Title: any; Feedback: any; }) => {[m
+[31m-//       // response.results.forEach((item: { Title: any; Id: any; CustomField1: any; CustomField2: any; }) => {[m
+[31m-//         const title = item.Title;[m
+[31m-//         const feedback = item.Feedback;[m
+[31m-//         // const id = item.Id;[m
+[31m-//         // const customField1 = item.CustomField1;[m
+[31m-//         // const customField2 = item.CustomField2;[m
+[31m-[m
+[31m-//         // Log item details[m
+[31m-//         // console.log(`Item with Id: ${feedback} and title: ${title} has CustomField1 value: ${customField1} and CustomField2 value: ${customField2}`);[m
+[31m-//         console.log(`Item with Id: ${feedback} and title: ${title} has CustomField1 value:`);[m
+[31m-//       });[m
+[31m-//     }).catch((error: any) => {[m
+[31m-//       // Log error if fetching list items fails[m
+[31m-//       console.error("Error fetching list items:", error);[m
+[31m-//       Dialog.alert(`Error fetching list items: ${error}`).catch((err) => {[m
+[31m-//         console.error("Error displaying alert:", err);[m
+[31m-//       });[m
+[31m-//     });[m
+[31m-[m
+[31m-//     return Promise.resolve();[m
+[31m-//   }[m
+[31m-// }[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-//============================================================[m
+[31m-[m
+[31m-// import { Log } from '@microsoft/sp-core-library';[m
+[31m-// import { BaseApplicationCustomizer } from '@microsoft/sp-application-base';[m
+[31m-// import { Dialog } from '@microsoft/sp-dialog';[m
+[31m-// import '../../css folder/Header.css';[m
+[31m-// import {[m
+[31m-//   PlaceholderContent,[m
+[31m-//   PlaceholderName,[m
+[31m-// } from '@microsoft/sp-application-base';[m
+[31m-// // import { WebPartContext } from "@microsoft/sp-webpart-base";[m
+[31m-// // import { sp } from '@pnp/sp';[m
+[31m-// import '@pnp/sp/lists';[m
+[31m-// import { sp } from "@pnp/sp";[m
+[31m-[m
+[31m-// import * as strings from 'HeaderApplicationCustomizerStrings';[m
+[31m-// import { ISPFXContext } from '@pnp/pnpjs';[m
+[31m-[m
+[31m-// const LOG_SOURCE: string = 'HeaderApplicationCustomizer';[m
+[31m-[m
+[31m-// export interface IHeaderApplicationCustomizerProperties {[m
+[31m-//   testMessage: string;[m
+[31m-// }[m
+[31m-[m
+[31m-// export default class HeaderApplicationCustomizer extends BaseApplicationCustomizer<IHeaderApplicationCustomizerProperties> {[m
+[31m-[m
+[31m-//   public onInit(): Promise<void> {[m
+[31m-//     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);[m
+[31m-//     sp.setup({[m
+[31m-//       spfxContext: this.context as unknown as ISPFXContext[m
+[31m-//     }); // Initialize PnPjs[m
+[31m-  [m
+[31m-//     // let message: string = this.properties.testMessage || '(No properties were provided.)';[m
+[31m-  [m
+[31m-[m
+[31m-//     const topPlaceholder: PlaceholderContent | undefined = this.context.placeholderProvider?.tryCreateContent(PlaceholderName.Top);[m
+[31m-//     if (topPlaceholder) {[m
+[31m-//       // Fetch list items using PnPjs[m
+[31m-//       console.log("GETTTING DAta");[m
+[31m-//       sp.web.lists.getByTitle("Attendees_List").items.get().then((items: any[]) => {[m
+[31m-        [m
+[31m-//         let listHtml = `<ul>`;[m
+[31m-//         items.forEach(item => {[m
+[31m-//           listHtml += `<li>${item.Title}</li>`; // Assuming "Title" is a column in your list[m
+[31m-//         });[m
+[31m-//         listHtml += `</ul>`;[m
+[31m-//         topPlaceholder.domElement.innerHTML = listHtml;[m
+[31m-//       }).catch((error: any) => {[m
+[31m-//         Dialog.alert(`Error fetching list items: ${error}`).catch((err) => {console.log(err);[m
+[31m-//         });[m
+[31m-//       });[m
+[31m-//     }else {[m
+[31m-//   console.error("Placeholder 'Top' is undefined.");[m
+[31m-// }[m
+[31m-[m
+[31m-[m
+[31m-//     // Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`).catch(() => {});[m
+[31m-[m
+[31m-//     return Promise.resolve();[m
+[31m-//   }[m
+[31m-// }[m
+[31m-[m
+[31m-//=================================================================[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+ import { Log } from '@microsoft/sp-core-library';[m
+ import {[m
+   BaseApplicationCustomizer[m
+[36m@@ -140,11 +15,8 @@[m [mimport * as strings from 'HeaderApplicationCustomizerStrings';[m
+ [m
+ const LOG_SOURCE: string = 'HeaderApplicationCustomizer';[m
+ [m
+[31m-/**[m
+[31m- * If your command set uses the ClientSideComponentProperties JSON input,[m
+[31m- * it will be deserialized into the BaseExtension.properties object.[m
+[31m- * You can define an interface to describe it.[m
+[31m-*/[m
+[32m+[m
+[32m+[m
+ export interface IHeaderApplicationCustomizerProperties {[m
+   // This is an example; replace with your own property[m
+   testMessage: string;[m
+[36m@@ -168,14 +40,14 @@[m [mexport default class HeaderApplicationCustomizer[m
+       // </div>[m
+       // </div>`;[m
+     }[m
+[32m+[m[32m    // <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="asu">[m
+[32m+[m[32m    // <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="can">[m
+ [m
+     const topPlaceholder: PlaceholderContent | undefined = this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top);[m
+     if (topPlaceholder) {[m
+       topPlaceholder.domElement.innerHTML = `[m
+       <div class="navbar bg-color flex flex-row w-full">[m
+       <div class="country-option flex-end flex padding-y">[m
+[31m-          <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="asu">[m
+[31m-          <img class="headerimage" src="${require("../../../sharepoint/assets/NotFound.png")}"  alt="can">[m
+       </div>[m
+       <div class="container flex flex-wrap align-center justify-between padding-x  text-white">[m
+           <div class="logo-container">[m
+[36m@@ -194,6 +66,18 @@[m [mexport default class HeaderApplicationCustomizer[m
+               <li class="list-style">[m
+                   <a href="#" class="decoration text-white padding-x">Services</a>[m
+               </li>[m
+[32m+[m[32m              <li class="list-style">[m
+[32m+[m[32m                  <a href="#" class="decoration text-white padding-x">Taxes</a>[m
+[32m+[m[32m              </li>[m
+[32m+[m[32m              <li class="list-style">[m
+[32m+[m[32m                  <a href="#" class="decoration text-white padding-x">maangment</a>[m
+[32m+[m[32m              </li>[m
+[32m+[m[32m              <li class="list-style">[m
+[32m+[m[32m                  <a href="#" class="decoration text-white padding-x">employys</a>[m
+[32m+[m[32m              </li>[m
+[32m+[m[32m              <li class="list-style">[m
+[32m+[m[32m                  <a href="#" class="decoration text-white padding-x">Customer</a>[m
+[32m+[m[32m              </li>[m
+               <li class="list-style">[m
+                   <a href="#" class="decoration text-white padding-x button">Careers</a>[m
+               </li>[m
